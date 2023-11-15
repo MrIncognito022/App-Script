@@ -1,0 +1,18 @@
+const SHEETID = '1NI0ecjrrbCCqq-tl5GGVb46CtxJ_LP5iluNLDLIioZg';
+function doGet(e){
+ const ss = SpreadsheetApp.openById(SHEETID);
+  const sheet= ss.getSheetByName('Jokes')
+  const rows = sheet.getDataRange().getValues();
+  Logger.log(rows);
+  return outputContent(rows)
+}
+function outputContent(data){
+  const temp  =JSON.stringify({
+    status:'success',
+    data:data,
+  })
+  return ContentService.createTextOutput(temp);
+}
+
+
+
